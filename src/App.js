@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React from 'react'
+import './App.css';
+import BodyComponent from './components/BodyComponent';
+import HeaderComponent from './components/HeaderComponent';
+import ButtonComponent from './components/ButtonComponent';
+import SearchComponent from './components/SearchComponent';
+
+
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     
+      <HeaderComponent/>
+      <SearchComponent/>
+      
+      <ButtonComponent/>
+      <BodyComponent/>
+  
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
+
+
+
+// const apibutton = document.getElementById("apiButton");
+// const apiData=document.getElementById("apiData")
+// const callApi = () => {
+//   fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
+//     .then(res => {
+//       if (!res.ok) {
+//         throw new Error('Network response was not ok');
+//       }
+//       return res.json();
+//     })
+//     .then(data => {
+//       const pokemonList = data.results.map(pokemon => pokemon.name);
+//       apiData.innerText = pokemonList.join(", ");
+//     })
+//     .catch(error => {
+//       console.error('Error fetching data:', error);
+//     });
+// }
+
+// apibutton.addEventListener("click", callApi);
