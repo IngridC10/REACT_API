@@ -12,12 +12,12 @@ import { BrowserRouter } from 'react-router-dom';
 const App = () => {
   return (
     <div>
-          {/* // <RouterPrincipal/> */}
-          <HeaderComponent/>
+           <RouterPrincipal/>
+          {/* <HeaderComponent/>
           <SearchComponent/>
           
           <ButtonComponent/>
-          <BodyComponent/>
+          <BodyComponent/> */}
 
     </div>
    )}
