@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-size: 40;
 
 
 }
@@ -24,4 +25,17 @@
 }
 
 
+.pokemon{
+  color: black;
+
+
+}
+
+.pokemon ul {
+  color:black,
+}
+
+.pokemon li {
+  color:black,
+}
 
