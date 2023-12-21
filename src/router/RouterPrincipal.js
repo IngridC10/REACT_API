@@ -1,17 +1,21 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import BodyComponent from './BodyComponent';
-import PokemonDetailsComponent from './PokemonDetailsComponent'; 
+import React from 'react'
+import {Routes,Route, Link,BrowserRouter} from 'react-router-dom'
+import ButtonComponent from '../components/ButtonComponent'
+import HeaderComponent from '../components/HeaderComponent'
 
 const RouterPrincipal = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={BodyComponent} />
-        <Route path="/pokemon/:name" component={PokemonDetailsComponent} />
-      </Switch>
-    </Router>
-  );
-};
+  <BrowserRouter>
+   
 
-export default RouterPrincipal;
+    <Routes>
+      <Route path="/button" element={<ButtonComponent/>}/>
+      <Route path="/header" element={<HeaderComponent/>}/>
+
+    </Routes>
+  </BrowserRouter>
+  )
+
+}
+
+export default RouterPrincipal

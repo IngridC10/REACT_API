@@ -5,22 +5,29 @@ import BodyComponent from './components/BodyComponent';
 import HeaderComponent from './components/HeaderComponent';
 import ButtonComponent from './components/ButtonComponent';
 import SearchComponent from './components/SearchComponent';
+import RouterPrincipal from './router/RouterPrincipal';
+import { BrowserRouter } from 'react-router-dom';
 
 
 
 
 const App = () => {
   return (
-    <div>
-     
-      <HeaderComponent/>
-      <SearchComponent/>
-      
-      <ButtonComponent/>
-      <BodyComponent/>
+  
+
+          <RouterPrincipal/>
+  //         {/* <HeaderComponent/>
+  //         <SearchComponent/>
+          
+  //         <ButtonComponent/>
+  //         <BodyComponent/>
+  //  */}
+    
+    
+
   
       
-    </div>
+   
   )
 }
 
