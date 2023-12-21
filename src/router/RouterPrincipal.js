@@ -5,7 +5,7 @@ import HeaderComponent from '../components/HeaderComponent'
 
 const RouterPrincipal = () => {
   return (
-  <BrowserRouter>
+
    
 
     <Routes>
@@ -13,7 +13,7 @@ const RouterPrincipal = () => {
       <Route path="/header" element={<HeaderComponent/>}/>
 
     </Routes>
-  </BrowserRouter>
+
   )
 
 }
