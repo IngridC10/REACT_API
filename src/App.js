@@ -9,27 +9,24 @@ import RouterPrincipal from './router/RouterPrincipal';
 import { BrowserRouter } from 'react-router-dom';
 
 
-
-
 const App = () => {
   return (
-  
-
-          <RouterPrincipal/>
-  //         {/* <HeaderComponent/>
-  //         <SearchComponent/>
+    <div>
+          {/* // <RouterPrincipal/> */}
+          <HeaderComponent/>
+          <SearchComponent/>
           
-  //         <ButtonComponent/>
-  //         <BodyComponent/>
-  //  */}
+          <ButtonComponent/>
+          <BodyComponent/>
+
+    </div>
+   )}
     
     
 
   
       
    
-  )
-}
 
 export default App
 
