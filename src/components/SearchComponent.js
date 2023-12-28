@@ -1,24 +1,56 @@
 import React, { useState } from 'react';
+import { useQuery, gql } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 
+const GET_POKEMON_DETAILS = gql`
+  query{
+  
+    pokemons{
+      results{
+        name
+        image
+      }
+    }
+  }
+`;
+
 const SearchComponent = () => {
-  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+  const { loading, error, data } = useQuery(GET_POKEMON_DETAILS, {
+    variables: { name: searchTerm }
+  });
 
   const handleSearch = () => {
     navigate(`/detail/${searchTerm}`);
   };
+  if (loading) return <p>Cargando...</p>;
+  if (error) return <p>Error al obtener los datos</p>;
+
+  const pokemon = data && data.pokemon;
+
   return (
-    <div className="search">
+    <div>
+      <h1>Buscar Pokémon</h1>
       <input
         type="text"
-        placeholder="Buscar..."
+        placeholder="Buscar Pokémon..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <button onClick={handleSearch}>Buscar</button>
+
+      {pokemon && (
+        <div>
+          <h2>Detalles del Pokémon</h2>
+          <div>
+            <p>Nombre: {pokemon.name}</p>
+            <img src={pokemon.image} alt={pokemon.name} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
-export default SearchComponent;
 
+export default SearchComponent;
