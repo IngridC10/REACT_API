@@ -1,25 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useQuery, gql } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import SearchComponent from './SearchComponent';
+
+const GET_TEST_DATA = gql`
+  query {
+    pokemons {
+      results {
+        name
+      }
+    }
+  }
+`;
 
 const ListadoComponent = () => {
-  const [pokemonList, setPokemonList] = useState([]);
+  const { loading, error, data } = useQuery(GET_TEST_DATA);
 
-  useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=50')
-      .then(response => response.json())
-      .then(data => {
-        setPokemonList(data.results);
-      })
-      .catch(error => console.log("Error al obtener los datos", error));
-  }, []);
+  if (loading) return <p>Cargando...</p>;
+  if (error) return <p>Error al obtener los datos</p>;
+
+  const pokemons = data.pokemons.results;
 
   return (
     <div className='pokemon'>
       <h1>Listado de pokemones</h1>
       <ul>
-     
-        {pokemonList.map((pokemon, index) => (
+        {pokemons.map((pokemon, index) => (
           <li key={index}>
             <Link to={`/detail/${pokemon.name}`}>{index + 1}. {pokemon.name}</Link>
           </li>
