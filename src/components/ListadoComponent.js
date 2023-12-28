@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Link } from 'react-router-dom';
 
-const GET_TEST_DATA = gql`
+const GET_POKEMON_LIST_DATA = gql`
   query {
     pokemons {
       results {
@@ -13,7 +13,7 @@ const GET_TEST_DATA = gql`
 `;
 
 const ListadoComponent = () => {
-  const { loading, error, data } = useQuery(GET_TEST_DATA);
+  const { loading, error, data } = useQuery(GET_POKEMON_LIST_DATA);
 
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error al obtener los datos</p>;
