@@ -8,7 +8,6 @@ const SearchComponent = () => {
   const handleSearch = () => {
     navigate(`/detail/${searchTerm}`);
   };
-
   return (
     <div className="search">
       <input
@@ -21,5 +20,5 @@ const SearchComponent = () => {
     </div>
   );
 };
-
 export default SearchComponent;
+

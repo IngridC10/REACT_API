@@ -2,18 +2,19 @@ import React from 'react'
 import HeaderComponent from '../HeaderComponent'
 import SearchComponent from '../SearchComponent'
 import ButtonComponent from '../ButtonComponent'
-import BodyComponent from '../BodyComponent'
+import ListadoComponent from '../ListadoComponent'
 
-const HomePrincipal = () => {
+const Pokemon = () => {
   return (
     <div>
         <HeaderComponent/>
         <SearchComponent/>
         <ButtonComponent/>
-        <BodyComponent/>
+        <ListadoComponent/>
+   
       
     </div>
   )
 }
 
-export default HomePrincipal
+export default Pokemon

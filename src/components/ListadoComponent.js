@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SearchComponent from './SearchComponent';
 
-const BodyComponent = () => {
+const ListadoComponent = () => {
   const [pokemonList, setPokemonList] = useState([]);
 
   useEffect(() => {
@@ -17,9 +18,10 @@ const BodyComponent = () => {
     <div className='pokemon'>
       <h1>Listado de pokemones</h1>
       <ul>
+     
         {pokemonList.map((pokemon, index) => (
           <li key={index}>
-            <Link to={`/detail/${index + 1}`}>{index + 1}. {pokemon.name}</Link>
+            <Link to={`/detail/${pokemon.name}`}>{index + 1}. {pokemon.name}</Link>
           </li>
         ))}
       </ul>
@@ -27,4 +29,4 @@ const BodyComponent = () => {
   );
 };
 
-export default BodyComponent;
+export default ListadoComponent;

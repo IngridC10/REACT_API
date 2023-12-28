@@ -1,37 +1,26 @@
-
-import React from 'react'
+import React from 'react';
 import './App.css';
-import BodyComponent from './components/BodyComponent';
-import HeaderComponent from './components/HeaderComponent';
-import ButtonComponent from './components/ButtonComponent';
-import SearchComponent from './components/SearchComponent';
 import RouterPrincipal from './router/RouterPrincipal';
-import { BrowserRouter } from 'react-router-dom';
 
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'https://graphql-pokeapi.graphcdn.app/',
+  cache: new InMemoryCache()
+});
 
 const App = () => {
   return (
-    <div>
-           <RouterPrincipal/>
-          {/* <HeaderComponent/>
-          <SearchComponent/>
-          
-          <ButtonComponent/>
-          <BodyComponent/> */}
-
+    <div className="App">
+      <ApolloProvider client={client}>
+        <RouterPrincipal />
+        {/* Otros componentes */}
+      </ApolloProvider>
     </div>
-   )}
-    
-    
+  );
+};
 
-  
-      
-   
-
-export default App
-
-
-
+export default App;
 
 
 // const apibutton = document.getElementById("apiButton");

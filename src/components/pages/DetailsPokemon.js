@@ -1,33 +1,51 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useQuery, gql } from '@apollo/client';
+import { useParams } from "react-router-dom";
 
-const DetailsPokemon = () => {
-  const [pokemonDetails, setPokemonDetails] = useState(null);
-  const { id } = useParams();
 
-  useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-      .then(response => response.json())
-      .then(data => {
-        setPokemonDetails(data);
-      })
-      .catch(error => console.log("Error al obtener los detalles", error));
-  }, [id]);
+const GET_TEST_DATA = gql`
+  query getPokemon($name: String!) {
+    pokemon(name: $name) {
+      name
+      sprites {
+        front_default
+      }
+    }
+  }
+`;
+
+const DetailComponent = (props) => {
+  let { pokemonName } = useParams();   
+  
+  console.log('namePOkemon', pokemonName);
+  const { loading, error, data } = useQuery(GET_TEST_DATA, {
+        variables: { name: pokemonName }
+  
+  });
+  console.log('data !!!!', data);
+  // useEffect(() => {
+  //   console.log('Nombre del Pokémon:', namePokemon);
+  //   const { loading, error, data } = useQuery(GET_TEST_DATA, {
+  //     variables: { name: namePokemon },
+  //   });
+  // }, []);
+
+  if (loading) return <p>Cargando...</p>;
+  if (error) return <p>Error al obtener los datos</p>;
+  
+  const pokemon = data.pokemon;
 
   return (
-    <div className='detail'>
-      {pokemonDetails && (
-        <div>
-          <h2>Detalles de Pokémon</h2>
-          <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} />
-          <p>ID: {pokemonDetails.id}</p>
-          <p>Nombre: {pokemonDetails.name}</p>
-          <p>Peso: {pokemonDetails.weight}</p>
-          <p>Talla: {pokemonDetails.height}</p>
-        </div>
-      )}
+    <div>
+      <h2>Prueba de consulta GraphQL</h2>
+      <div>
+        <p>Nombre: {pokemon.name}</p>
+        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+      </div>
     </div>
   );
 };
 
-export default DetailsPokemon;
+export default DetailComponent;
+
+
