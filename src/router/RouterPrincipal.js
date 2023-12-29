@@ -2,8 +2,6 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import DetailsPokemon from '../components/pages/DetailsPokemon';
 import Pokemon from '../components/pages/Pokemon';
-import ListadoComponent from '../components/ListadoComponent';
-
 
 
 const RouterPrincipal = () => {
